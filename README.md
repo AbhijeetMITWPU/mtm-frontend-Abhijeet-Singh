@@ -13,13 +13,15 @@ The Itinerary Planner is a web application that allows users to plan their trips
    - Users can search for their travel destinations using a dropdown feature to select their departure and arrival locations.
    - This feature simplifies the process of planning trips by allowing users to easily select their travel points.
   
-   
+<img src="home.png" alt="Itinerary Planner">
+<img src="trip detail.png" alt="Itinerary Planner">
+<img src="drop down.png" alt="Itinerary Planner">
 
 2. **Itinerary Planner**:
    - Users can write tasks along with descriptions and save them in their itinerary.
    - The planner includes options to add new tasks, delete existing tasks, and modify tasks.
    - This feature helps users organize their travel plans efficiently.
-
+<img src="Itinearary task.png" alt="Itinerary Planner">
 
 ## Installation
 To run the project locally, follow these steps:
