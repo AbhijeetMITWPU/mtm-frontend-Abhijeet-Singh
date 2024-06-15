@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import TaskForm from './component/taskform';
 import Navbar from './component/Navbar';
 import TaskList from './component/tasklist';
@@ -14,12 +12,12 @@ const App = () => {
 
   const addTask = (task) => {
     setTasks([...tasks, task]);
-    toast.success('Task added successfully!');
+    alert('Task added successfully!');
   };
 
   const handleDeleteTask = (id) => {
     setTasks(tasks.filter((task) => task._id !== id));
-    toast.success('Task deleted successfully!');
+    alert('Task deleted successfully!');
   };
 
   const addTrip = (trip) => {
@@ -41,7 +39,6 @@ const App = () => {
         <TaskForm addTask={addTask} />
         <TaskList tasks={tasks} deleteTask={handleDeleteTask} />
       </div>
-      <ToastContainer />
     </div>
   );
 };

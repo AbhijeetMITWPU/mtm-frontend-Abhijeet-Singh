@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const TaskInput = ({ addTask, updateTask, editingTask }) => {
   const [taskText, setTaskText] = useState('');
@@ -51,7 +49,7 @@ const TaskInput = ({ addTask, updateTask, editingTask }) => {
     e.preventDefault();
 
     if (!taskText.trim() || !taskDescription.trim() || textError || descriptionError) {
-      toast.warn('Please fill in all fields correctly.');
+      alert('Please fill in all fields correctly.');
       return;
     }
 
@@ -59,12 +57,12 @@ const TaskInput = ({ addTask, updateTask, editingTask }) => {
       // Perform update logic (replace with actual backend integration)
       const updatedTask = { ...editingTask, text: taskText, description: taskDescription };
       updateTask(updatedTask);
-      toast.success('Task updated successfully!');
+      alert('Task updated successfully!');
     } else {
       // Perform add task logic (replace with actual backend integration)
       const newTask = { text: taskText, description: taskDescription };
       addTask(newTask);
-      toast.success('Task added successfully!');
+      alert('Task added successfully!');
     }
 
     // Clear form fields and reset errors
@@ -75,44 +73,41 @@ const TaskInput = ({ addTask, updateTask, editingTask }) => {
   };
 
   return (
-    <>
-      <ToastContainer />
-      <div className="card shadow-sm">
-        <div className="card-body">
-          <h5 className="card-title mb-4">{editingTask ? 'Edit Task' : 'Add New Task in Your Itinerary'}</h5>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="text" className="form-label">Task Name</label>
-              <input
-                type="text"
-                id="text"
-                name="text"
-                value={taskText}
-                onChange={handleChange}
-                className={`form-control ${textError ? 'is-invalid' : ''}`}
-                placeholder="Enter task name"
-                required
-              />
-              <div className="invalid-feedback">{textError}</div>
-            </div>
-            <div className="mb-3">
-              <label htmlFor="description" className="form-label">Task Description</label>
-              <textarea
-                id="description"
-                name="description"
-                value={taskDescription}
-                onChange={handleChange}
-                className={`form-control ${descriptionError ? 'is-invalid' : ''}`}
-                placeholder="Enter task description"
-                required
-              />
-              <div className="invalid-feedback">{descriptionError}</div>
-            </div>
-            <button type="submit" className="btn btn-primary">{editingTask ? 'Update Task' : 'Add Task'}</button>
-          </form>
-        </div>
+    <div className="card shadow-sm">
+      <div className="card-body">
+        <h5 className="card-title mb-4">{editingTask ? 'Edit Task' : 'Add New Task in Your Itinerary'}</h5>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="text" className="form-label">Task Name</label>
+            <input
+              type="text"
+              id="text"
+              name="text"
+              value={taskText}
+              onChange={handleChange}
+              className={`form-control ${textError ? 'is-invalid' : ''}`}
+              placeholder="Enter task name"
+              required
+            />
+            <div className="invalid-feedback">{textError}</div>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="description" className="form-label">Task Description</label>
+            <textarea
+              id="description"
+              name="description"
+              value={taskDescription}
+              onChange={handleChange}
+              className={`form-control ${descriptionError ? 'is-invalid' : ''}`}
+              placeholder="Enter task description"
+              required
+            />
+            <div className="invalid-feedback">{descriptionError}</div>
+          </div>
+          <button type="submit" className="btn btn-primary">{editingTask ? 'Update Task' : 'Add Task'}</button>
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 
